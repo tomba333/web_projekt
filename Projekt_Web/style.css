@@ -1,0 +1,45 @@
+#entry_img{
+    width: 1600px;
+    height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    min-width: 50%;
+}
+.content-container{
+    max-width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+.about-container{
+  
+    max-width: 900px;
+}
+.map-container{
+    display: flex;
+}
+#map{
+    align-items: flex-start;
+    width: 600px;
+    height: 600px;
+    flex-basis: 60%;
+}
+.text-container{
+    width: 30%;
+    padding-left: 20px;
+}
+#content-divider::before{
+    content: "\a";
+    white-space: pre;
+    display: block;
+}
+.cijenik-container{
+    width: 900px;
+ 
+}
