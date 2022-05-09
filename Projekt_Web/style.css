@@ -26,8 +26,8 @@
 }
 #map{
     align-items: flex-start;
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     flex-basis: 60%;
 }
 .text-container{
@@ -42,4 +42,37 @@
 .cijenik-container{
     width: 900px;
  
+}
+.rezervacija-container{
+    max-width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.content {
+    position:fixed;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    background-color: #e8eae6;
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 100;
+    display: none;
+    /*to hide popup initially*/
+}
+  
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    padding: 4px;
 }
