@@ -47,15 +47,39 @@ CloseCon($conn);
                         $(this).parent('.pizza-container').append(imageTag);
                     }
                     });
-
+                var name =""
                 $(".table").click(function (){
                         $(".content").show();
-                        $(".content").children(".table-name").text($(this).attr('alt'));
-                    
+                        $(".content").children(".table-name").text(name = $(this).attr('alt'));
                 })
                 $(".close-btn").click(function(){
                     $(".content").toggle();
                 })
+                $(".submit").click(function(event){
+                    var formData = {
+                    ime: $("#ime").val(),
+                    prezime: $("#prezime").val(),
+                    email: $("#email").val(),
+                    datum: $("#datum").val(),
+                    br_gostiju : $("#br_gostiju").val(),
+                    stol : name,
+                    };
+                $.ajax(
+                    {
+                    url: "insert.php",
+                    type: "POST",
+                    data: formData,
+                    dataType: "json",
+                });     
+                    $(".content").toggle();
+                });
+               
+
+
+
+
+
+
             });
             
                
@@ -169,27 +193,27 @@ CloseCon($conn);
                 <form method="post" action="insert.php" id="form_reservation">
                     <div class="row">
                       <div class="col">
-                        <input type="text" class="form-control" placeholder="First name" name="ime">
+                        <input type="text" class="form-control" placeholder="First name" id="ime">
                       </div>
                       <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name" name="prezime">
+                        <input type="text" class="form-control" placeholder="Last name" id="prezime">
                       </div>
                     </div> 
                     <div class="row">
                       <div class="col">
-                        <input type="email" class="form-control" placeholder="Email" name="email">
+                        <input type="email" class="form-control" placeholder="Email" id="email">
                       </div>
                       <div class="col">
-                        <input type="datetime-local" class="form-control" placeholder="Datum" name="datum">
+                        <input type="datetime-local" class="form-control" placeholder="Datum" id="datum">
                       </div>
                       <div class="col">
-                        <input type="text" class="form-control" placeholder="Broj gostiju" name="br_gostiju">
+                        <input type="text" class="form-control" placeholder="Broj gostiju" id="br_gostiju">
                       </div>
                     </div>
                  </form>
                     <div class="row">
                          <div class="col">
-                             <button type="submit" form="form_reservation" id="Submit" value="Submit">Submit</button>
+                             <button type="submit"  class="submit" value="Submit" name=submit>Submit</button>
                          </div>
                     </div>
                       
