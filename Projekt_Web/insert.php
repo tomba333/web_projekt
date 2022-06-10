@@ -11,6 +11,7 @@ $br_gostiju = $_REQUEST['br_gostiju'];
 $stol =isset($_POST['stol'])?$_POST['stol']:'not yet';
 $sql = "INSERT INTO rezervacija (ime,prezime,datum,email,broj_gostiju,stol)
 VALUES ('$ime','$prezime','$datum','$email','$br_gostiju','$stol')";
+
 if (mysqli_query($conn, $sql)) {
     header('Location: ./index.php');
 } else {

@@ -56,30 +56,54 @@ CloseCon($conn);
                     $(".content").toggle();
                 })
                 $(".submit").click(function(event){
+                    let regex = new RegExp(/^[a-zA-Z]+(-[a-zA-Z]+)*$/);
+                    let regex_email = new RegExp(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/);
+                    let form_flag = true;
                     var formData = {
-                    ime: $("#ime").val(),
-                    prezime: $("#prezime").val(),
-                    email: $("#email").val(),
-                    datum: $("#datum").val(),
-                    br_gostiju : $("#br_gostiju").val(),
+                    ime: $(".ime").val(),
+                    prezime: $(".prezime").val(),
+                    email: $(".email").val(),
+                    datum: $(".datum").val(),
+                    br_gostiju : $(".br_gostiju").val(),
                     stol : name,
                     };
-                $.ajax(
+                    if(formData['ime'] === "" || formData['prezime']==="" || formData['email']==="" || formData['datum'] === "" || formData['br_gostiju']=== ""){
+                        alert("Polja nisu unesena.");
+                        
+                    }else{
+                        if(!regex.test(formData['ime']) ){
+                           alert("Pogrešno uneseno: Ime");
+                           form_flag = false;
+                        }
+                        if(!regex.test(formData['prezime']) ){
+                           alert("Pogrešno uneseno: Prezime");
+                           form_flag = false;
+                        }
+                        if(!regex_email.test(formData['email'])){
+                           alert("Pogrešno unesen: Email");
+                           form_flag = false;
+                        }
+                            
+                    }
+                  
+                    if(form_flag){
+                    $.ajax(
                     {
                     url: "insert.php",
                     type: "POST",
                     data: formData,
                     dataType: "json",
-                });     
+                     });     
+                     
+                     $("#form_reservation").each(function(){
+                         this.reset();
+                     })
                     $(".content").toggle();
+                    }
+                    
+                
                 });
                
-
-
-
-
-
-
             });
             
                
@@ -190,24 +214,36 @@ CloseCon($conn);
             </div>
             <h3 class="table-name"></h3>
       
-                <form method="post" action="insert.php" id="form_reservation">
+                <form method="post" action="insert.php" id="form_reservation" class="was-validated">
                     <div class="row">
                       <div class="col">
-                        <input type="text" class="form-control" placeholder="First name" id="ime">
+                        
+                        <input type="text" class="form-control is-valid ime" id="validationServer01" placeholder="Ime" required>
+                        <div class="valid-feedback">
+                        <label for="validationServer01" class="form-label"></label>
+                        </div>
                       </div>
                       <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name" id="prezime">
+                      <label for="validationServer02" class="form-label"></label>
+                        <input type="text" class="form-control is-valid prezime" id="validationServer02" placeholder="Prezime" required>
+                        
                       </div>
                     </div> 
                     <div class="row">
                       <div class="col">
-                        <input type="email" class="form-control" placeholder="Email" id="email">
+                      <label for="validationServer03" class="form-label"></label>
+                        <input type="text" class="form-control is-valid email" id="validationServer03" placeholder="Email" required>
+                       
                       </div>
                       <div class="col">
-                        <input type="datetime-local" class="form-control" placeholder="Datum" id="datum">
+                      <label for="validationServer04" class="form-label"></label>
+                        <input type="datetime-local" class="form-control is-valid datum" id="validationServer04" placeholder="Datum" required>
+                        
                       </div>
                       <div class="col">
-                        <input type="text" class="form-control" placeholder="Broj gostiju" id="br_gostiju">
+                      <label for="validationServer05" class="form-label"></label>
+                        <input type="text" class="form-control is-valid br_gostiju" id="validationServer05" placeholder="Broj gostiju" required>
+                     
                       </div>
                     </div>
                  </form>

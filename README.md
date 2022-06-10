@@ -7,3 +7,5 @@ Aplikacija će biti prikazana kao One page s navigacijom koja će korisnika odve
 Jelovnik će prikazivati popis hrane 
 Rezervcacija stolova raditi na način da će korisnici pritiskom na stol moći rezervirati stol na odredeni datum s brojem gostiju
 Kartica o nama će prikazivati informacije o našem timu!
+
+ 
